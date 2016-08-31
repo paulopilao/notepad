@@ -12,7 +12,7 @@ namespace NotePadPilao.Hubs
     {
         public void Enviar(string content)
         {
-            File.WriteAllText("offline.txt",content);
+            File.WriteAllText(GlobalVariables.Path, content);
             if (System.Runtime.Caching.MemoryCache.Default.Get("content") == null)
                 System.Runtime.Caching.MemoryCache.Default.Add("content", content, DateTime.Now.AddYears(1));
             else
