@@ -16,12 +16,12 @@ namespace NotePadPilao.Controllers
 
         public ActionResult Index()
         {
-            var content = System.IO.File.ReadAllText("offline.txt");
+            var content = System.IO.File.ReadAllText(Server.MapPath(@"~/offline.txt"));
             return View(new NotepadResult() { Content = content });
         }
         public ActionResult Write()
         {
-            var content = System.IO.File.ReadAllText("offline.txt");
+            var content = System.IO.File.ReadAllText(Server.MapPath(@"~/offline.txt"));
             return View(new NotepadResult() { Content = content });
         }
 
