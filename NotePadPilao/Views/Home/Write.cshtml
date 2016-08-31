@@ -1,0 +1,29 @@
+﻿@{
+    Layout = null;
+}
+@model NotePadPilao.Controllers.NotepadResult
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body style="height: 600px">
+
+<h2>NotePad</h2>
+    @Html.TextAreaFor(x=>x.Content,new {style="height:90%;width:100%;background: #f0e68c"})
+    <script src="~/Scripts/jquery-1.8.0.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.2.1.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script>
+        var nph = $.connection.notePadHub;
+        $.connection.hub.start();
+        $('#Content').keyup(function () {
+            nph.server.enviar($('#Content').val());
+            $('#Content').focus();
+        });
+    </script>
+</body>
+</html>
