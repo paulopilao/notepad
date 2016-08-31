@@ -16,14 +16,12 @@ namespace NotePadPilao.Controllers
 
         public ActionResult Index()
         {
-            //            var content = System.IO.File.ReadAllText("offline.txt");
-
-            var content = MemoryCache.Default.Get("content") == null ? string.Empty : MemoryCache.Default.Get("content").ToString();
+            var content = System.IO.File.ReadAllText("offline.txt");
             return View(new NotepadResult() { Content = content });
         }
         public ActionResult Write()
         {
-            var content = MemoryCache.Default.Get("content") == null ? string.Empty : MemoryCache.Default.Get("content").ToString();
+            var content = System.IO.File.ReadAllText("offline.txt");
             return View(new NotepadResult() { Content = content });
         }
 
